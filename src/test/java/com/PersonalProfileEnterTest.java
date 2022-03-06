@@ -1,0 +1,59 @@
+package com;
+
+import com.ApiActions.User;
+import com.ApiActions.UserClient;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static com.ApiActions.ApiClient.loginURL;
+import static com.codeborne.selenide.Selenide.webdriver;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertTrue;
+
+public class PersonalProfileEnterTest {
+
+    User user;
+    UserClient userClient;
+
+    @Before
+    public void setUp() {
+        userClient = new UserClient();
+        user = User.getRandomCorrectUser();
+        Response response = userClient.userRegistration(user);
+        response.then()
+                .assertThat()
+                .statusCode(200)
+                .and()
+                .body("success", equalTo(true));
+        Configuration.startMaximized = true;
+    }
+
+    @After
+    public void tearDown() {
+        webdriver().driver().close();
+    }
+
+    @DisplayName("Вход в аккаунт пользователя")
+    @Test
+    public void successfulEnterIntoUserAccountTest() {
+
+        LoginPage loginPage = Selenide.open(loginURL, LoginPage.class);
+        loginPage.logIn(user.email,user.password);
+
+        MainPage mainPage = Selenide.page(MainPage.class);
+        mainPage.clickPersonalAccountButton();
+
+        PersonalAccountPage personalAccountPage = Selenide.page(PersonalAccountPage.class);
+        boolean isProfileLinkDisplayed = personalAccountPage.isProfileButtonDisplayed();
+        personalAccountPage.clickExitButton();
+
+        assertTrue("Пользователь не перешел на личную страницу", isProfileLinkDisplayed);
+    }
+
+}
+
