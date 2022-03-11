@@ -1,15 +1,16 @@
 package com;
 
-import com.ApiActions.User;
-import com.ApiActions.UserClient;
+import com.apiActions.User;
+import com.apiActions.UserClient;
 import com.codeborne.selenide.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Test;
 
-import static com.ApiActions.ApiClient.registerPageURL;
+import static com.apiActions.ApiClient.registerPageURL;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static org.junit.Assert.assertEquals;
+
 import com.codeborne.selenide.Selenide;
 import org.junit.Before;
 

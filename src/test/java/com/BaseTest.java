@@ -10,8 +10,8 @@ public class BaseTest {
     public void startUp() {
         String browserType = "chrome";
 
-        Configuration.browser = System.getProperty("selenide.browser",browserType);
-        System.setProperty("selenide.browser",browserType);
+        Configuration.browser = System.getProperty("selenide.browser", browserType);
+        System.setProperty("selenide.browser", browserType);
         WebDriverManager.chromedriver();
     }
 }

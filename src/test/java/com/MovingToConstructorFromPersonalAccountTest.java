@@ -1,7 +1,7 @@
 package com;
 
-import com.ApiActions.User;
-import com.ApiActions.UserClient;
+import com.apiActions.User;
+import com.apiActions.UserClient;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -11,8 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.ApiActions.ApiClient.loginURL;
-import static com.ApiActions.ApiClient.mainPageURL;
+import static com.apiActions.ApiClient.loginURL;
+import static com.apiActions.ApiClient.mainPageURL;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;

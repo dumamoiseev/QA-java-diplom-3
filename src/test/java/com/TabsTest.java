@@ -6,7 +6,7 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.ApiActions.ApiClient.mainPageURL;
+import static com.apiActions.ApiClient.mainPageURL;
 import static org.junit.Assert.assertTrue;
 
 public class TabsTest extends BaseTest {

@@ -8,7 +8,7 @@ public class ForgotPasswordPage {
 
     // кнопка Войти
     @FindBy(how = How.CSS,using = ".Auth_link__1fOlj")
-    public SelenideElement enterButton;
+    private SelenideElement enterButton;
 
     // клик по enterButton
     public void clickEnterButtonOnForgotPassPage() {

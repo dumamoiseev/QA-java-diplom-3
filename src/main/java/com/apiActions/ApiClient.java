@@ -1,4 +1,5 @@
-package com.ApiActions;
+package com.apiActions;
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 
@@ -9,7 +10,6 @@ public class ApiClient {
     public static final String mainPageURL = "https://stellarburgers.nomoreparties.site/";
     public static final String registerPageURL = "https://stellarburgers.nomoreparties.site/register";
     public static final String loginURL = "https://stellarburgers.nomoreparties.site/login";
-
 
 
     public static RequestSpecification getBaseSpec() {

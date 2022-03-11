@@ -1,9 +1,7 @@
-package com.ApiActions;
+package com.apiActions;
 
 import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
-
-import static io.restassured.RestAssured.given;
 
 
 public class User extends ApiClient {
@@ -35,7 +33,7 @@ public class User extends ApiClient {
     }
 
     @Step("Получение  пользователя c паролем в 5 символов")
-    public static User getUserWith5lettersPassword(){
+    public static User getUserWith5lettersPassword() {
         final String email = RandomStringUtils.randomAlphabetic(10) + "@gmail.com";
         final String password = RandomStringUtils.randomAlphabetic(5);
         final String name = RandomStringUtils.randomAlphabetic(5);
@@ -43,7 +41,7 @@ public class User extends ApiClient {
     }
 
     @Step("Получение  пользователя без почты")
-    public static User getUserWithOutEmail(){
+    public static User getUserWithOutEmail() {
         final String password = RandomStringUtils.randomAlphabetic(10);
         final String name = RandomStringUtils.randomAlphabetic(10);
         return new User(null, password, name);
