@@ -42,5 +42,4 @@ public class TabsTest extends BaseTest {
         boolean isSaucesTabActive = mainPage.isSaucesTabActive();
         assertTrue("Нет переключения на раздел Булки при клике на таб Булки", isSaucesTabActive);
     }
-
 }

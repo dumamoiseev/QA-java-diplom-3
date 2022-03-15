@@ -72,5 +72,4 @@ public class RegistrationUserTest extends BaseTest {
         assertEquals("Expected error message is " + expectedInvalidPassErrorMessage + ". But actual is " + actualErrorMessage,
                 expectedInvalidPassErrorMessage, actualErrorMessage);
     }
-
 }

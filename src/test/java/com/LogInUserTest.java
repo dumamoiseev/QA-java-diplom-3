@@ -54,13 +54,8 @@ public class LogInUserTest extends BaseTest {
         mainPage.clickLogInToAccountButton();
 
         LoginPage loginPage = Selenide.page(LoginPage.class);
-
-        System.out.println(user.email);
-        System.out.println(user.password);
-
         loginPage.logIn(user.email, user.password);
 
-        //mainPage.scroolToSetUpBurgerTitle();
         boolean setUpBurgerTitle = mainPage.isSetUpBurgerTitleDisplayed();
         assertTrue("Logo 'Собери бургер' is not displayed", setUpBurgerTitle);
     }
@@ -117,6 +112,5 @@ public class LogInUserTest extends BaseTest {
 
         assertTrue("Лого 'Собери бургер' не отображается", setUpBurgerTitle);
     }
-
 }
 

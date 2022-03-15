@@ -54,6 +54,5 @@ public class PersonalProfileEnterTest {
 
         assertTrue("Пользователь не перешел на личную страницу", isProfileLinkDisplayed);
     }
-
 }
 

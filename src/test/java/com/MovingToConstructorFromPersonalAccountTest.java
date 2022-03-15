@@ -19,8 +19,8 @@ import static org.junit.Assert.assertEquals;
 
 public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
 
-   User user;
-   UserClient userClient;
+    User user;
+    UserClient userClient;
 
     @Before
     public void setUp() {
@@ -60,7 +60,6 @@ public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
         personalAccountPage.clickConstructorButton();
         String actualUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
 
-
         assertEquals("Пользователь не перешел на страницу 'Конструктор'", mainPageURL, actualUrl);
     }
 
@@ -69,7 +68,7 @@ public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
     public void moveToConstructorByClickOnLogoTest() {
 
         LoginPage loginPage = Selenide.open(loginURL, LoginPage.class);
-        loginPage.logIn(user.email,user.password);
+        loginPage.logIn(user.email, user.password);
 
         MainPage mainPage = Selenide.page(MainPage.class);
         mainPage.clickPersonalAccountButton();
@@ -80,5 +79,4 @@ public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
 
         assertEquals("Пользователь не перешел на страницу 'Конструктор'", mainPageURL, actualUrl);
     }
-
 }

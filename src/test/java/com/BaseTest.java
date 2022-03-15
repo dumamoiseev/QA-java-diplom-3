@@ -2,11 +2,12 @@ package com;
 
 import com.codeborne.selenide.Configuration;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+
 
 public class BaseTest {
 
-    @BeforeEach
+    @Before
     public void startUp() {
         String browserType = "chrome";
 
