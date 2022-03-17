@@ -2,6 +2,7 @@ package com;
 
 import com.apiActions.User;
 import com.apiActions.UserClient;
+import com.apiActions.UserCredentials;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
@@ -20,10 +21,12 @@ public class LogInUserTest extends BaseTest {
 
     UserClient userClient;
     User user;
+    UserCredentials userCredentials;
 
     @Before
     public void setUp() {
         userClient = new UserClient();
+        userCredentials = new UserCredentials();
         user = User.getRandomCorrectUser();
         Response response = userClient.userRegistration(user);
         response.then()
@@ -43,8 +46,10 @@ public class LogInUserTest extends BaseTest {
         personalAccountPage.clickExitButton();
 
         webdriver().driver().close();
-    }
 
+        String accessToken = userCredentials.getUserAccessToken(user);
+        userClient.delete(accessToken);
+    }
 
     @DisplayName("Логин при клике на кнопку Войти на Главной странице")
     @Test

@@ -2,6 +2,7 @@ package com;
 
 import com.apiActions.User;
 import com.apiActions.UserClient;
+import com.apiActions.UserCredentials;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
@@ -19,10 +20,12 @@ public class LogOutUserTest extends BaseTest {
     String expectedEnterTitle = "Вход";
     UserClient userClient;
     User user;
+    UserCredentials userCredentials;
 
     @Before
     public void setUp() {
         userClient = new UserClient();
+        userCredentials = new UserCredentials();
         user = User.getRandomCorrectUser();
         Response response = userClient.userRegistration(user);
         response.then()
@@ -36,6 +39,9 @@ public class LogOutUserTest extends BaseTest {
     @After
     public void tearDown() {
         webdriver().driver().close();
+
+        String accessToken = userCredentials.getUserAccessToken(user);
+        userClient.delete(accessToken);
     }
 
     @DisplayName("Проверяет, что пользователь может разлогиниться")

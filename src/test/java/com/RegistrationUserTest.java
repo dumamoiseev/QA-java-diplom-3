@@ -2,6 +2,7 @@ package com;
 
 import com.apiActions.User;
 import com.apiActions.UserClient;
+import com.apiActions.UserCredentials;
 import com.codeborne.selenide.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -18,12 +19,14 @@ public class RegistrationUserTest extends BaseTest {
 
     UserClient userClient;
     User user;
+    UserCredentials userCredentials;
     String expectedInvalidPassErrorMessage = "Некорректный пароль";
     String expectedEnterTitle = "Вход";
 
     @Before
     public void setUp() {
         userClient = new UserClient();
+        userCredentials = new UserCredentials();
         Configuration.startMaximized = true;
     }
 
@@ -42,6 +45,9 @@ public class RegistrationUserTest extends BaseTest {
         LoginPage loginPage = Selenide.page(LoginPage.class);
         String actualEnterTitle = loginPage.EnterTitle();
 
+        String accessToken = userCredentials.getUserAccessToken(user);
+        userClient.delete(accessToken);
+
         assertEquals("Expected title is " + expectedEnterTitle + ". But actual is " + actualEnterTitle,
                 expectedEnterTitle, actualEnterTitle);
     }
@@ -55,6 +61,9 @@ public class RegistrationUserTest extends BaseTest {
 
         LoginPage loginPage = Selenide.page(LoginPage.class);
         String actualEnterTitle = loginPage.EnterTitle();
+
+        String accessToken = userCredentials.getUserAccessToken(user);
+        userClient.delete(accessToken);
 
         assertEquals("Expected title is " + expectedEnterTitle + ". But actual is " + actualEnterTitle,
                 expectedEnterTitle, actualEnterTitle);

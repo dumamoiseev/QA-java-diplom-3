@@ -2,6 +2,7 @@ package com;
 
 import com.apiActions.User;
 import com.apiActions.UserClient;
+import com.apiActions.UserCredentials;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -21,10 +22,12 @@ public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
 
     User user;
     UserClient userClient;
+    UserCredentials userCredentials;
 
     @Before
     public void setUp() {
         userClient = new UserClient();
+        userCredentials = new UserCredentials();
         user = User.getRandomCorrectUser();
         Response response = userClient.userRegistration(user);
         response.then()
@@ -44,6 +47,9 @@ public class MovingToConstructorFromPersonalAccountTest extends BaseTest {
         personalAccountPage.clickExitButton();
 
         webdriver().driver().close();
+
+        String accessToken = userCredentials.getUserAccessToken(user);
+        userClient.delete(accessToken);
     }
 
     @DisplayName("Переход в Конструктор по клику на логотип Stellar Burgers из Личного кабинета")
