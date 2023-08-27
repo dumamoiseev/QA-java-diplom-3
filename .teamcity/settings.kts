@@ -36,8 +36,8 @@ project {
         githubAppConnection {
             id = "PROJECT_EXT_58"
             displayName = "TEST GitHub App"
-            appId = "123123123"
-            clientId = "123123123"
+            appId = "123123123999"
+            clientId = "123123123999"
             clientSecret = "credentialsJSON:5b131916-407d-4299-828f-6754ffa2e005"
             privateKey = "credentialsJSON:6b372973-33bc-4d52-a624-106c80ae2a17"
             ownerUrl = "https://github.com/username"
